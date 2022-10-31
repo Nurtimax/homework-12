@@ -1,8 +1,9 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
+import AuthContext from "../store/Auth-context";
 
 const emailReducer = (state, action) => {
   if (action.type === "INPUT_EMAIL") {
@@ -62,6 +63,8 @@ const Login = (props) => {
     initialPasswordState
   );
 
+  const {isDay} = useContext(AuthContext)
+
 
   // const [enteredPassword, setEnteredPassword] = useState("");
   // const [passwordIsValid, setPasswordIsValid] = useState();
@@ -113,7 +116,7 @@ const Login = (props) => {
   };
 
   return (
-    <Card className={classes.login}>
+    <Card className={isDay ? classes.night :classes.login }>
       <form onSubmit={submitHandler}>
         <div
           className={`${classes.control} ${

@@ -5,6 +5,21 @@
   padding: 2rem;
 }
 
+
+.night {
+  color: #ffffff;
+  width: 90%;
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+.night form div  label {
+  color: white;
+}
+.night form div  input {
+  background: rgb(83, 82, 82);
+  border: .1px solid black;
+}
 .control {
   margin: 1rem 0;
   display: flex;

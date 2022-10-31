@@ -1,29 +1,48 @@
-import React from 'react';
+import React, { useContext, useState } from "react";
+import AuthContext from "../store/Auth-context";
+import Toggle from "../toggle/Toggle";
 
-import classes from './Navigation.module.css';
+import classes from "./Navigation.module.css";
 
-const Navigation = (props) => {
+const Navigation = () => {
+  const { isLogin, onLogout, isDay, toggleDay } = useContext(AuthContext);
+
+  // return (
+  // <AuthContext.Consumer>
+  {
+    /* {({isLogin, onLogout}) => { */
+  }
   return (
     <nav className={classes.nav}>
       <ul>
-        {props.isLoggedIn && (
+        {isLogin && (
           <li>
             <a href="/">Users</a>
           </li>
         )}
-        {props.isLoggedIn && (
+        {isLogin && (
           <li>
             <a href="/">Admin</a>
           </li>
         )}
-        {props.isLoggedIn && (
+        {isLogin && (
           <li>
-            <button onClick={props.onLogout}>Logout</button>
+            <Toggle toggled={isDay} onClick={toggleDay} />
+          </li>
+        )}
+        {isLogin && (
+          <li>
+            <button onClick={onLogout}>Logout</button>
           </li>
         )}
       </ul>
     </nav>
   );
+  // }}
+  {
+    /* </AuthContext.Consumer> */
+  }
+  // );
 };
 
 export default Navigation;
